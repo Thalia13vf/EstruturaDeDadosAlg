@@ -10,7 +10,6 @@ public class TesteAdiciona {
 		vetor.adiciona("elemento1");
 		vetor.adiciona("elemento2");
 		vetor.adiciona("elemento3");
-			
 	}
 
 }
