@@ -1,15 +1,25 @@
 package com.estruturadedadosalg.vetor;
 
-public class Vetor {
-	private Object[] elementos;
+import java.lang.reflect.Array;
+
+public class Vetor<T> {
+	//T de Type, ou seja é passado o tipo 
+	private T[] elementos;
 	private int tamanho;
 	
+	//Melhor solução para instanciar arrays de tipo generico
 	public Vetor(int capacidade) {
-		this.elementos = new Object[capacidade];
+		this.elementos = (T[]) new Object[capacidade];
 		this.tamanho = 0;
 	}
 	
-	public boolean adiciona(Object elemento) {
+	//Utilizando Reflection API
+	public Vetor(int capacidade, Class<T> tipoClasse) {
+		this.elementos = (T[]) Array.newInstance(tipoClasse, capacidade);
+		this.tamanho = 0;
+	}
+	
+	public boolean adiciona(T elemento) {
 		this.aumentaCapacidade();
 		if(this.tamanho < this.elementos.length) {
 			this.elementos[this.tamanho] = elemento;
@@ -19,7 +29,7 @@ public class Vetor {
 		return false;
 	}
 	
-	public boolean adiciona(int posicao, Object elemento) {
+	public boolean adiciona(int posicao, T elemento) {
 		if(!(posicao >= 0 && posicao < this.tamanho)) {
 			throw new IllegalArgumentException("Posição Inválida!");
 		}
@@ -36,7 +46,7 @@ public class Vetor {
 	
 	private void aumentaCapacidade() {
 		if(this.tamanho == this.elementos.length) {
-			Object[] elementosNovos = new Object[this.elementos.length * 2];
+			T[] elementosNovos = (T[]) new Object[this.elementos.length * 2];
 			for(int i = 0; i < this.elementos.length; i++) {
 				elementosNovos[i] = elementos[i];
 			}
@@ -57,7 +67,7 @@ public class Vetor {
 	}
 	
 	//Busca o elemento, se existir retorna a posição, se não -1
-	public int busca(Object elemento) {
+	public int busca(T elemento) {
 		for(int i = 0; i < this.tamanho; i++) {
 			if(this.elementos[i].equals(elemento)) {
 				return i;
@@ -75,7 +85,7 @@ public class Vetor {
 		}
 		this.tamanho--;
 	}
-	public void remove(Object elemento) {
+	public void remove(T elemento) {
 		int posicao = this.busca(elemento);
 		if(posicao >= 0) {
 			this.remove(posicao);
