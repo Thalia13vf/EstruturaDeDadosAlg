@@ -4,7 +4,7 @@ import com.estruturadedadosalg.vetor.Vetor;
 
 public class TesteRemove {
 	public static void main(String[] args) {
-		Vetor vetor = new Vetor(3);
+		Vetor<String> vetor = new Vetor<String>(3);
 		
 		vetor.adiciona("B");
 		vetor.adiciona("G");
@@ -18,10 +18,10 @@ public class TesteRemove {
 		
 		System.out.println(vetor);
 		
-		System.out.println("Removendo o elemento E");
+		System.out.println("Removendo o elemento");
 		
 		try{
-			vetor.remove("A");
+			vetor.remove("F");
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());

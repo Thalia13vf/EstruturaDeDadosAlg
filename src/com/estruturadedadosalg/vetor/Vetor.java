@@ -59,11 +59,11 @@ public class Vetor<T> {
 		return this.tamanho;
 	}
 	
-	public Object busca(int posicao) {
+	public T busca(int posicao) {
 		if(!(posicao >= 0 && posicao < tamanho)) {
 			throw new IllegalArgumentException("Posição inválida!");
 		}
-		return this.elementos[posicao];
+		return this.elementos[posicao];  
 	}
 	
 	//Busca o elemento, se existir retorna a posição, se não -1
@@ -74,6 +74,42 @@ public class Vetor<T> {
 			}
 		}
 		return -1;
+	}
+	
+	public boolean contem(T elemento) {
+		return this.busca(elemento) >= 0;
+	}
+	
+	public int ultimoIndice(T elemento) {
+		for(int i = this.tamanho - 1; i >= 0; i--) {
+			if(elemento.equals(elementos[i])) {
+				return i;
+			}
+		}
+		
+		return -1;
+	}
+	
+	public T obtem(int posicao) {
+		return this.busca(posicao);
+	}
+	
+	public void limpar() {
+		/* A primeira opção cria um novo array vazio e 
+		 * passa como referencia
+		 * Os objetos são apagados pelo coletor de lixo*/
+		//this.elementos = (T[]) new Object[this.elementos.length];
+		
+		/*Com o tamanho 0, os valores anteriores podem 
+		 * ser reescritos.
+		 */
+		//this.tamanho = 0;
+		
+		//Coloca null em cada posição do array
+		for(int i = 0; i < this.tamanho; i++) {
+			this.elementos[i] = null;
+		}
+		this.tamanho = 0;
 	}
 	
 	public void remove(int posicao) {
