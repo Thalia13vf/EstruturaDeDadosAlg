@@ -13,6 +13,10 @@ public class Vetor<T> {
 		this.tamanho = 0;
 	}
 	
+	public Vetor() {
+		this(10);
+	}
+	
 	//Utilizando Reflection API
 	public Vetor(int capacidade, Class<T> tipoClasse) {
 		this.elementos = (T[]) Array.newInstance(tipoClasse, capacidade);
