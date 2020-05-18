@@ -3,7 +3,7 @@ package com.estruturadedadosalg.pilhaestatica.exercicios;
 import java.util.Scanner;
 
 import com.estruturadedadosalg.pilhaestatica.Pilha;
-
+//Correção
 public class Exercicio5Palindromo {
 	public static void main(String[] args) {
 		Scanner teclado = new Scanner(System.in);
