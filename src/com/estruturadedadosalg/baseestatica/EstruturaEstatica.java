@@ -1,4 +1,4 @@
-package com.estruturadedadosalg.base;
+package com.estruturadedadosalg.baseestatica;
 
 public class EstruturaEstatica<T> {
 	protected T[] elementos;

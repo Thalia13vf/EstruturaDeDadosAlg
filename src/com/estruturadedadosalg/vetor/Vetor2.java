@@ -1,6 +1,6 @@
 package com.estruturadedadosalg.vetor;
 
-import com.estruturadedadosalg.base.EstruturaEstatica;
+import com.estruturadedadosalg.baseestatica.EstruturaEstatica;
 
 public class Vetor2<T> extends EstruturaEstatica<T> {
 	

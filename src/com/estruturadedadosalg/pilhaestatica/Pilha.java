@@ -1,6 +1,6 @@
 package com.estruturadedadosalg.pilhaestatica;
 
-import com.estruturadedadosalg.base.EstruturaEstatica;
+import com.estruturadedadosalg.baseestatica.EstruturaEstatica;
 
 public class Pilha<T> extends EstruturaEstatica<T>{
 	
