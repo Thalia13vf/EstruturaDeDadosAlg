@@ -19,12 +19,43 @@ public class ListaLigada {
 			
 	}
 	
+	private boolean posicaoOcupada(int posicao) {
+		return posicao >= 0 && posicao < this.totalDeElementos;
+	}
+	
+	private Celula pegaCelula(int posicao) {
+		if(!this.posicaoOcupada(posicao)) {
+			throw new IllegalArgumentException("Posição não existe");
+		}
+		
+		Celula atual = primeira;
+		for(int i = 0; i < posicao; i++) {
+			atual = atual.getProxima();
+		}
+		return atual;
+	}
+	
 	public void adiciona(int posicao, Object elemento) {
+		//no começo da lista
+		if(posicao == 0) { 
+			this.adicionaNoComeco(elemento);
+		
+			//No fim
+		}else if(posicao == this.totalDeElementos) { 
+			this.adiciona(elemento);
+		}
+		else {
+			Celula anterior = this.pegaCelula(posicao - 1);
+			Celula nova = new Celula(anterior.getProxima(),
+					elemento);
+			anterior.setProxima(nova);
+			this.totalDeElementos++;
+		}
 		
 	}
 	
 	public Object pega(int posicao) {
-		return null;
+		return this.pegaCelula(posicao).getElemento();
 	}
 	
 	public void remove(int posicao) {
@@ -52,7 +83,17 @@ public class ListaLigada {
 	}
 	
 	public void removeDoComeco() {
+		if(!this.posicaoOcupada(0)) {
+			throw new IllegalArgumentException("Posição "
+					+ "não existe.");
+		}
 		
+		this.primeira = this.primeira.getProxima();
+		this.totalDeElementos--;
+		
+		if(this.totalDeElementos == 0) {
+			this.ultima = null;
+		}
 	}
 	
 	public void removeDoFim() {

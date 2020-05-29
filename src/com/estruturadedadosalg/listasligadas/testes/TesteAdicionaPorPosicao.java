@@ -8,6 +8,7 @@ public class TesteAdicionaPorPosicao {
 		lista.adiciona("Rafael");
 		lista.adiciona(0, "Paulo");
 		lista.adiciona(1, "Camila");
+		lista.adiciona(2, "Ana");
 		
 		System.out.println(lista);
 	}

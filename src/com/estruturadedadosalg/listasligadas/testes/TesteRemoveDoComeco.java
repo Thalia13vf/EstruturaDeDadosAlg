@@ -10,6 +10,7 @@ public class TesteRemoveDoComeco {
 		lista.adiciona("Paulo");
 		
 		lista.removeDoComeco();
+		lista.removeDoComeco();
 		
 		System.out.println(lista);
 		
