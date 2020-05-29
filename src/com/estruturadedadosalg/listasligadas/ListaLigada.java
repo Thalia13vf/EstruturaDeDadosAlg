@@ -59,24 +59,53 @@ public class ListaLigada {
 	}
 	
 	public void remove(int posicao) {
+		if(!this.posicaoOcupada(posicao)) {
+			throw new IllegalArgumentException("Posição não existe.");
+		}
 		
+		if(posicao == 0) {
+			this.removeDoComeco();
+		}
+		else if(posicao == this.totalDeElementos -1) {
+			this.removeDoFim();
+		}
+		else {
+			Celula anterior = this.pegaCelula(posicao - 1);
+			Celula atual = anterior.getProxima();
+			Celula proxima = atual.getProxima();
+			anterior.setProxima(proxima);
+			proxima.setAnterior(anterior);
+			this.totalDeElementos--;
+		}
 	}
 	
 	public int tamanho() {
-		return 0;
+		return this.totalDeElementos;
 	}
 	
-	public boolean contem(Object o) {
+	public boolean contem(Object elemento) {
+		Celula atual = this.primeira;
+		
+		while(atual != null) {
+			if(atual.getElemento().equals(elemento)) {
+				return true;
+			}
+			atual = atual.getProxima();
+		}
 		return false;
 	}
 	
 	public void adicionaNoComeco(Object elemento) {
-		Celula nova = new Celula(this.primeira, elemento);
-		this.primeira = nova; 
 		
 		if(this.totalDeElementos == 0) {
 			//caso especial da lista vazia
-			this.ultima = this.primeira;
+			Celula nova = new Celula(elemento);
+			this.primeira = nova; 
+			this.ultima = nova;
+		}else {
+			Celula nova = new Celula(this.primeira, elemento);
+			this.primeira.setAnterior(nova);
+			this.primeira = nova;
 		}
 		
 		this.totalDeElementos++;
@@ -85,7 +114,7 @@ public class ListaLigada {
 	public void removeDoComeco() {
 		if(!this.posicaoOcupada(0)) {
 			throw new IllegalArgumentException("Posição "
-					+ "não existe.");
+					+ "	não existe.");
 		}
 		
 		this.primeira = this.primeira.getProxima();
@@ -97,7 +126,18 @@ public class ListaLigada {
 	}
 	
 	public void removeDoFim() {
-		
+		if(!this.posicaoOcupada(this.totalDeElementos - 1)) {
+			throw new IllegalArgumentException("Posição não existe.");
+		}
+		if(this.totalDeElementos == 1) {
+			this.removeDoComeco();
+		}
+		else {
+			Celula penultima = this.ultima.getAnterior();
+			penultima.setProxima(null);
+			this.ultima = penultima;
+			this.totalDeElementos--;
+		}
 	}
 	
 	public String toString() {
