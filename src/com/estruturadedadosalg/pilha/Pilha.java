@@ -35,7 +35,7 @@ public class Pilha<T> {
 		
 		builder.append("[");
 		
-		for(int i = 0; i < this.pecas.size() - 1; i++) {
+		for(int i = 0; i < this.pecas.size() - 1;i++) {
 			builder.append(this.pecas.get(i));
 			builder.append(", ");
 		}

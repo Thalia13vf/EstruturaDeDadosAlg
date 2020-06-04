@@ -1,4 +1,4 @@
-package com.estruturadedadosalg.pilha.teste;
+package com.estruturadedadosalg.pilha.exercicios;
 
 import com.estruturadedadosalg.pilha.Pilha;
 
