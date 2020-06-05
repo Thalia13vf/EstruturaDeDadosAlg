@@ -6,44 +6,36 @@ import java.util.Stack;
 public class DiamantesEAreia {
 	public static void main(String[] args) {
 		Scanner teclado = new Scanner(System.in);
-		Stack<Character> pilha = new Stack<>();
-
 		int casosDeTeste = teclado.nextInt();
 
-		for(int i = 0; i < casosDeTeste; i++) {
+		for(int c = 0; c < casosDeTeste; c++) {
+			int numeroDeDiamantes = 0;
+			Stack<Character> pilha = new Stack<>();
+			Stack<Character> auxiliar = new Stack<>();
 			String diamantes = teclado.next();
-			System.out.println(contar(diamantes));
-		}
 
-	}
-
-	public static int contar(String diamantes) {
-		Stack<Character> pilha = new Stack<>();
-		StringBuilder diamantesSemAreia = new StringBuilder();
-		diamantesSemAreia.append(diamantes);
-		diamantesSemAreia = diamantesSemAreia.reverse();
-		
-		int total = 0;
-		for(int i = 0; i < diamantes.length(); i++) {
-			if(diamantes.charAt(i) != '.') {
-				pilha.add(diamantes.charAt(i));
-			}
-		}
-
-		System.out.println(pilha); 
-		for(int i = 0; i < pilha.size(); i++) {	
-			char topo = pilha.pop();
-			if(topo == '<') {
-				char proximo = pilha.pop();
-				if(proximo == '>') {
-					total++;
-					
-					System.out.println("Diamante encontrado");
-					System.out.println(pilha);
+			for(int i = 0; i < diamantes.length(); i++) {
+				if(diamantes.charAt(i)== '<') {
+					pilha.add(diamantes.charAt(i));
+				}else if(diamantes.charAt(i) == '>'){
+					auxiliar.add(diamantes.charAt(i));
 				}
 			}
-		}	
-		return total;
+			
+			int menor = 0;
+			if(pilha.size() < auxiliar.size()) {
+				menor = pilha.size();
+			}else {
+				menor = auxiliar.size();
+			}
+			
+			for(int i = 0; i < menor; i++) {
+				if(pilha.pop() == '<' && auxiliar.pop() == '>') {
+					numeroDeDiamantes++;
+				}	
+			}
+			System.out.println(numeroDeDiamantes);
+		}
+		teclado.close();
 	}
-
 }
