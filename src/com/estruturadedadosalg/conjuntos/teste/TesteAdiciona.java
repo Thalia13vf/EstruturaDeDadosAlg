@@ -6,7 +6,7 @@ import com.estruturadedadosalg.conjuntos.ConjuntoEspalhamento;
 
 public class TesteAdiciona {
 	public static void main(String[] args) {
-		ConjuntoEspalhamento conjunto = new ConjuntoEspalhamento();
+		ConjuntoEspalhamento<String> conjunto = new ConjuntoEspalhamento<>();
 		
 		conjunto.adiciona("Rafael");
 		conjunto.adiciona("Ana");
