@@ -4,43 +4,35 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ConjuntoEspalhamento {
+public class ConjuntoEspalhamento<T> {
 	private int tamanho = 0;
 	
-	private List<List<String>> tabela = new 
-			ArrayList<List<String>>();
+	private List<List<T>> tabela = new 
+			ArrayList<List<T>>();
 	
 	public ConjuntoEspalhamento() {
 		for(int i = 0; i < 26; i++) {
-			LinkedList<String> lista = new LinkedList<>();
+			LinkedList<T> lista = new LinkedList<>();
 			tabela.add(lista);
 		}
 	}
 	
-	private int calculaCodigoDeEspalhamento(String palavra) {
-		int codigo = 1;
-		for(int i = 0; i < palavra.length(); i++) {
-			codigo = 31 * codigo + palavra.charAt(i);
-		}
-		return codigo;
-	}
-	
-	private int calculaIndiceDaTabela(String palavra) {
-		int codigoDeEspalhamento = this.calculaCodigoDeEspalhamento(palavra);
+	private int calculaIndiceDaTabela(T o) {
+		int codigoDeEspalhamento = o.hashCode();
 		codigoDeEspalhamento = Math.abs(codigoDeEspalhamento);
 		return codigoDeEspalhamento % this.tabela.size();
 	}//Função de espalhamento
 	
 	private void redimensionaTabela(int novaCapacidade) {
-		List<String> palavras = this.pegaTodas();
+		List<T> objetos = this.pegaTodas();
 		this.tabela.clear();
 		
 		for(int i = 0; i < novaCapacidade; i++) {
-			this.tabela.add(new LinkedList<String>());
+			this.tabela.add(new LinkedList<T>());
 		}
 		
-		for(String palavra : palavras) {
-			this.adiciona(palavra);
+		for(T objeto : objetos) {
+			this.adiciona(objeto);
 		}
 	}
 	
@@ -55,35 +47,35 @@ public class ConjuntoEspalhamento {
 		}
 	}
 	
-	public void adiciona (String palavra) {
-		if(!this.contem(palavra)) {
+	public void adiciona (T o) {
+		if(!this.contem(o)) {
 			this.verificaCarga();
-			int indice = this.calculaIndiceDaTabela(palavra);
-			List<String> lista = this.tabela.get(indice);
-			lista.add(palavra);
+			int indice = this.calculaIndiceDaTabela(o);
+			List<T> lista = this.tabela.get(indice);
+			lista.add(o);
 			this.tamanho++;
 		}
 	}
 	
-	public void remove (String palavra) {
-		if(this.contem(palavra)) {
-			int indice = this.calculaIndiceDaTabela(palavra);
-			List<String> lista = this.tabela.get(indice);
-			lista.remove(palavra);
+	public void remove (T o) {
+		if(this.contem(o)) {
+			int indice = this.calculaIndiceDaTabela(o);
+			List<T> lista = this.tabela.get(indice);
+			lista.remove(o);
 			this.tamanho--;
 			this.verificaCarga();
 		}
 	}
 	
-	public boolean contem (String palavra) {
-		int indice = this.calculaIndiceDaTabela(palavra);
-		List<String> lista = this.tabela.get(indice);
+	public boolean contem (T o) {
+		int indice = this.calculaIndiceDaTabela(o);
+		List<T> lista = this.tabela.get(indice);
 		
-		return lista.contains(palavra);
+		return lista.contains(o);
 	}
 	
-	public List<String> pegaTodas(){
-		List<String> palavras = new ArrayList<String>();
+	public List<T> pegaTodas(){
+		List<T> palavras = new ArrayList<>();
 		
 		for(int i = 0; i < this.tabela.size(); i++) {
 			palavras.addAll(this.tabela.get(i));
@@ -96,7 +88,7 @@ public class ConjuntoEspalhamento {
 	}
 	
 	public void imprimeTabela() {
-		for(List<String> lista : this.tabela) {
+		for(List<T> lista : this.tabela) {
 			System.out.print("[");
 			for(int i = 0; i < lista.size(); i++) {
 				System.out.print("*");
