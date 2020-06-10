@@ -1,19 +1,26 @@
 package com.estruturadedadosalg.mapas;
 
-public class Associacao {
-	private String placa;
-	private Carro carro;
+public class Associacao<C, V> {
+	private C chave;
+	private V valor;
 	
-	public Associacao(String placa, Carro carro) {
-		this.placa = placa;
-		this.carro = carro;
+	public Associacao(C chave, V valor) {
+		this.chave = chave;
+		this.valor = valor;
 	}
 	
-	public String getPlaca() {
-		return this.placa;
+	public C getChave() {
+		return this.chave;
 	}
 	
-	public Carro getCarro() {
-		return this.carro;
+	public V getValor() {
+		return this.valor;
 	}
+
+	@Override
+	public String toString() {
+		return "{ " + this.chave + "->" + this.valor + "}";
+	}
+	
+	
 }

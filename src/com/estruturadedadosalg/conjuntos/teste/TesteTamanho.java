@@ -6,8 +6,12 @@ import com.estruturadedadosalg.conjuntos.ConjuntoEspalhamento;
 
 public class TesteTamanho {
 	public static void main(String[] args) {
-		ConjuntoEspalhamento conjunto = new ConjuntoEspalhamento();
+		ConjuntoEspalhamento<String> conjunto = new ConjuntoEspalhamento<>();
 		
+		for(int i = 0; i < 150; i++) {
+			conjunto.adiciona("" + i);
+		}
+			
 		conjunto.adiciona("Fernanda");
 		conjunto.adiciona("Ana");
 		conjunto.adiciona("Bia");

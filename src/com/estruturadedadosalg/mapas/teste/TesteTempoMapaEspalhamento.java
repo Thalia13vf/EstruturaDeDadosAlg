@@ -1,34 +1,39 @@
 package com.estruturadedadosalg.mapas.teste;
 
 import com.estruturadedadosalg.mapas.Carro;
-import com.estruturadedadosalg.mapas.MapaLista;
+import com.estruturadedadosalg.mapas.MapaEspalhamento;
 
-public class TesteTempoMapaLista {
+public class TesteTempoMapaEspalhamento {
 	public static void main(String[] args) {
-		MapaLista<String, Carro> mapaLista = new MapaLista<>();
+		MapaEspalhamento<String, Carro> mapaEspalhamento = 
+				new MapaEspalhamento<>();
 		int numeroDeElementos = 15000;
 		
 		long inicio = System.currentTimeMillis();
 		
 		for(int i = 0; i < numeroDeElementos; i++) {
-			mapaLista.adiciona("" + i, new Carro("c" + i));
+			mapaEspalhamento.adiciona("" + i, new Carro("c" + i));
+		}
+		
+		System.out.println("Tamanho " + mapaEspalhamento.tamanho());
+		
+		for(int i = 0; i < numeroDeElementos; i++) {
+			mapaEspalhamento.pega("" + i);
 		}
 		
 		for(int i = 0; i < numeroDeElementos; i++) {
-			mapaLista.pega("" + i);
+			mapaEspalhamento.contemChave("" + i);
 		}
 		
 		for(int i = 0; i < numeroDeElementos; i++) {
-			mapaLista.contemChave("" + i);
-		}
-		
-		for(int i = 0; i < numeroDeElementos; i++) {
-			mapaLista.remove("" + i);
+			mapaEspalhamento.remove("" + i);
 		}
 		
 		long fim = System.currentTimeMillis();
 		
 		System.out.println("Tempo: " + (fim - inicio) / 1000.0);
-		//11.939
+		//Sem a tabela dinâmica 1.161
+		//Com a tabela dinâmica 0.414
+		
 	}
 }

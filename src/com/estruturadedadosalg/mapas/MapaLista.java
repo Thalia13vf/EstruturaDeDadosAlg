@@ -3,31 +3,31 @@ package com.estruturadedadosalg.mapas;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapaLista {
-	private List<Associacao> associacoes = new ArrayList<>();
+public class MapaLista<C, V> {
+	private List<Associacao<C, V>> associacoes = new ArrayList<>();
 	
-	public void adiciona(String placa, Carro carro) {
-		if(!this.contemChave(placa)) {
-			Associacao associacao = new Associacao(placa, carro);
+	public void adiciona(C chave, V valor) {
+		if(!this.contemChave(chave)) {
+			Associacao<C, V> associacao = new Associacao<>(chave, valor);
 			this.associacoes.add(associacao);		
 		}
 	}
 	
-	public Carro pega(String placa) {
-		for(Associacao associacao : this.associacoes) {
-			if(placa.equals(associacao.getPlaca())) {
-				return associacao.getCarro();
+	public V pega(C chave) {
+		for(Associacao<C, V> associacao : this.associacoes) {
+			if(chave.equals(associacao.getChave())) {
+				return associacao.getValor();
 			}
 		}
 		throw new IllegalArgumentException("A chave não existe.");
 	}
 	
-	public void remove(String placa) {
-		if(this.contemChave(placa)) {
+	public void remove(C chave) {
+		if(this.contemChave(chave)) {
 			for(int i = 0; i < this.associacoes.size(); i++) {
-				Associacao associacao = this.associacoes.get(i);
+				Associacao<C, V> associacao = this.associacoes.get(i);
 				
-				if(placa.equals(associacao.getPlaca())) {
+				if(chave.equals(associacao.getChave())) {
 					this.associacoes.remove(i);
 					break;
 				}
@@ -37,9 +37,9 @@ public class MapaLista {
 		}
 	}
 	
-	public boolean contemChave(String placa) {
-		for(Associacao associacao : this.associacoes) {
-			if(placa.equals(associacao.getPlaca())) {
+	public boolean contemChave(C chave) {
+		for(Associacao<C, V> associacao : this.associacoes) {
+			if(chave.equals(associacao.getChave())) {
 				return true;
 			}
 		}
