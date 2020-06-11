@@ -9,10 +9,15 @@ public class TesteAdicionaMapaEspalhamento {
 		
 		System.out.println(mapa.tamanho());
 		
-		for(int i = 0; i < 15050; i++) {
+		for(int i = 0; i < 2500; i++) {
 			mapa.adiciona("*" + i, new Carro("*" + i));
 		}
 		
+		mapa.adiciona("*teste0000", new Carro("* teste"));
+		
+		System.out.println("Tamanho " + mapa.tamanho());
+		
+		mapa.remove("*teste0000");
 		System.out.println("Tamanho " + mapa.tamanho());
 	}
 	

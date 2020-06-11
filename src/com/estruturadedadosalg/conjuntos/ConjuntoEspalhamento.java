@@ -34,6 +34,8 @@ public class ConjuntoEspalhamento<T> {
 		for(T objeto : objetos) {
 			this.adiciona(objeto);
 		}
+		
+		this.tamanho = objetos.size();
 	}
 	
 	private void verificaCarga() {

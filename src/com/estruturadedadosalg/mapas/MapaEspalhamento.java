@@ -10,7 +10,7 @@ public class MapaEspalhamento<C, V> {
 	private int tamanho = 0;
 
 	public MapaEspalhamento() {
-		for(int i = 0; i < 50; i++) {
+		for(int i = 0; i < 16; i++) {
 			this.tabela.add(new LinkedList<Associacao<C, V>>());
 		}
 	}
@@ -25,7 +25,7 @@ public class MapaEspalhamento<C, V> {
 
 		if(carga > 0.75) {
 			this.redimensionaTabela(capacidade * 2);
-			
+
 		}else if(carga < 0.25) {
 			this.redimensionaTabela(Math.max(capacidade / 2, 10));
 		}
@@ -34,16 +34,18 @@ public class MapaEspalhamento<C, V> {
 	private void redimensionaTabela(int novaCapacidade) {
 		List<Associacao<C, V>> todas = this.pegaTodas();
 		this.tabela.clear();
-		
+
 		for(int i = 0; i < novaCapacidade; i++) {
 			this.tabela.add(new LinkedList<Associacao<C, V>>());
 		}
-		
+
 		for(Associacao<C, V> a : todas) {
 			this.adiciona(a.getChave(), a.getValor());
 		}
+		
+		this.tamanho = todas.size();
 	}
-
+	
 	private List<Associacao<C, V>> pegaTodas() {
 		List<Associacao<C, V>> todas = new ArrayList<>(); 
 		for(int i = 0; i < this.tabela.size(); i++) {
@@ -79,7 +81,7 @@ public class MapaEspalhamento<C, V> {
 				return;
 			}
 		}
-		
+
 		throw new IllegalArgumentException("A chave não existe.");
 	}
 
@@ -88,7 +90,7 @@ public class MapaEspalhamento<C, V> {
 		if(this.contemChave(chave)) {
 			this.remove(chave);
 		}
-		
+
 		int indice = this.calculaIndiceDaTabela(chave);
 		List<Associacao<C, V>> lista = this.tabela.get(indice);
 		lista.add(new Associacao<C, V>(chave, valor));
@@ -110,11 +112,11 @@ public class MapaEspalhamento<C, V> {
 	}
 
 	public int tamanho() {
-//		this.tamanho = 0;
-//		for(int i = 0; i < this.tabela.size(); i++) {
-//			this.tamanho += this.tabela.get(i).size();
-//		}
+		//		this.tamanho = 0;
+		//		for(int i = 0; i < this.tabela.size(); i++) {
+		//			this.tamanho += this.tabela.get(i).size();
+		//		}
 		return this.tamanho;
 	}
-	
+
 }
