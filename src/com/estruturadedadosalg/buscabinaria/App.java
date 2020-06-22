@@ -1,4 +1,4 @@
-package com.estruturadedadosalg.busca;
+package com.estruturadedadosalg.buscabinaria;
 
 public class App {
 	public static void main(String[] args) {
@@ -14,6 +14,10 @@ public class App {
 		System.out.println("Posição do elemento 12 " + colecao.buscaBinaria(12));
 		System.out.println("Posição do elemento 76 " + colecao.buscaBinaria(76));
 		System.out.println("Posição do elemento 99 " + colecao.buscaBinaria(99));
-
+		
+		System.out.println();
+		
+		System.out.println("Posição do elemento 5 = " + colecao.buscaBianriaDecrescente(2));
+		System.out.println("Posição do elemento 8 = " + colecao.buscaBianriaDecrescente(8));
 	}
 }

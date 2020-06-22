@@ -1,8 +1,9 @@
-package com.estruturadedadosalg.busca;
+package com.estruturadedadosalg.buscabinaria;
 
 public class Colecao {
 	//private int valores[] = {12, 56, 87, 23, 96, 43, 27, 76, 33, 11};
 	private int valores[] = {11, 12, 23, 27, 33, 43, 56, 76, 87, 96 };
+	private int numeros[] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
 	
 	public int buscaSequencial(int valor) {
 		int iteracoes = 0;
@@ -31,6 +32,28 @@ public class Colecao {
 					inicio = meio + 1;
 				}else { //O valor é menor do que o que está no meio
 					fim = meio - 1;
+				}
+			}
+		}
+		return -1;
+	}
+	
+	public int buscaBianriaDecrescente(int numero) {
+		int meio, inicio, fim;
+		int iteracoes = 0;
+		inicio = 0;
+		fim = numeros.length - 1;
+		while(inicio <= fim) {
+			iteracoes++;
+			meio = (inicio + fim) / 2;
+			if(numero == numeros[meio]) {
+				return meio;
+			}
+			else {
+				if(numero > numeros[meio]) {
+					fim = meio - 1;
+				}else if(numero < numeros[meio]){ //didatico não precisava ter if
+					inicio = meio + 1;
 				}
 			}
 		}
