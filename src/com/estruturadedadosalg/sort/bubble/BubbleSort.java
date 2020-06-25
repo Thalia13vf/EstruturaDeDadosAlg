@@ -1,12 +1,18 @@
-package com.estruturadedadosalg.sort;
+package com.estruturadedadosalg.sort.bubble;
 
 public class BubbleSort {
 	private int vetor[] = {25, 57, 48, 37, 12, 92, 33};
+	
+	public void setVetor(int[] vetor) {
+		this.vetor = vetor;
+	}
 	
 	public void bubbleSort() {
 		int iteracao;  // número de iterações 
 		int posicao;
 		int temporario; //para a troca
+		
+		System.out.println("Realizando Bubble Sort em um vetor de " + vetor.length + " elementos");
 		
 		for(iteracao = 0; iteracao < vetor.length - 1; iteracao++) {
 			for(posicao = 0; posicao < vetor.length - iteracao - 1; posicao++) {
@@ -17,8 +23,6 @@ public class BubbleSort {
 					vetor[posicao + 1] = temporario;
 				}
 			}
-			System.out.println("----------- Final da iteração " + iteracao);
-			mostraVetor();
 		}
 	}
 	

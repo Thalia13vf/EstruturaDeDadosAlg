@@ -40,23 +40,19 @@ public class Colecao {
 	
 	public int buscaBianriaDecrescente(int numero) {
 		int meio, inicio, fim;
-		int iteracoes = 0;
 		inicio = 0;
 		fim = numeros.length - 1;
 		while(inicio <= fim) {
-			iteracoes++;
 			meio = (inicio + fim) / 2;
 			if(numero == numeros[meio]) {
 				return meio;
 			}
-			else {
-				if(numero > numeros[meio]) {
+			else if(numero > numeros[meio]) {
 					fim = meio - 1;
 				}else if(numero < numeros[meio]){ //didatico não precisava ter if
 					inicio = meio + 1;
 				}
 			}
-		}
 		return -1;
 	}
 }
