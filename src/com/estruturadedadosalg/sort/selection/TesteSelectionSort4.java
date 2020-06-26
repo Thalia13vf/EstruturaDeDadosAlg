@@ -1,7 +1,5 @@
 package com.estruturadedadosalg.sort.selection;
-
 import java.util.Arrays;
-
 
 public class TesteSelectionSort4 {
 	public static int[] ordena(int[] array) {

@@ -1,6 +1,6 @@
 package com.estruturadedadosalg.sort.selection;
 
-public class TesteSelection2 {
+public class TesteTempo {
 	public static void main(String[] args) {
 		SelectionSort selection = new SelectionSort();
 		int[] vetor = new int[50000];

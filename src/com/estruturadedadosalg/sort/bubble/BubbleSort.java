@@ -11,9 +11,7 @@ public class BubbleSort {
 		int iteracao;  // número de iterações 
 		int posicao;
 		int temporario; //para a troca
-		
-		System.out.println("Realizando Bubble Sort em um vetor de " + vetor.length + " elementos");
-		
+				
 		for(iteracao = 0; iteracao < vetor.length - 1; iteracao++) {
 			for(posicao = 0; posicao < vetor.length - iteracao - 1; posicao++) {
 				//comparar o elemento da posição com o próximo
