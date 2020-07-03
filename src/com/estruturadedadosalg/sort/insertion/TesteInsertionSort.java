@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class TesteInsertionSort {
 	public static void main(String[] args) {
 		InsertionSort sort = new InsertionSort();
-		int[] vetor = {25, 57, 48, 37};
+		int[] vetor = {8, 5, 2, 1};
 		//25, 57, 48, 37, 12, 92, 33
 		sort.setVetor(vetor);
 		sort.insertionSort();
