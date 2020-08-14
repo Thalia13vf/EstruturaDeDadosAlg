@@ -41,8 +41,9 @@ public class QuickSort {
 			return;
 		}
 		pivo = this.partition(inicio, fim);
-		quickSort(inicio, pivo - 1);
-		quickSort(pivo + 1, fim);
+		System.out.println("Pivo " + pivo);
+		quickSort(inicio, pivo - 1); //direita
+		quickSort(pivo + 1, fim); //esquerda
 		
 	}
 
