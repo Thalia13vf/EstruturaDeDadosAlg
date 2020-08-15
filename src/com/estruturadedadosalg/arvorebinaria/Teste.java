@@ -9,5 +9,15 @@ public class Teste {
 		arvore.inserir(new Elemento(15));
 		arvore.inserir(new Elemento(12));
 		arvore.inserir(new Elemento(18));
+		
+		//System.out.println("O elemento 5 existe na árvore? " + arvore.busca(5));
+		
+		arvore.imprimirPreOrdem();
+		System.out.println();
+		arvore.imprimirInOrdem();
+		System.out.println();
+		arvore.imprimirInOrdemInvertida();
+		System.out.println();
+		arvore.imprimirPosOrdem();
 	}
 }	

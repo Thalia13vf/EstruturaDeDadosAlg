@@ -51,6 +51,81 @@ public class Arvore {
 		}
 	}
 	
+	public boolean busca(int valor) {
+		if(isEmpty()) {
+			return false;
+		}
+		if(this.elemento.getValor() == valor) { //se é o elemento raiz
+			return true;
+		}else {
+			if(valor < this.elemento.getValor()) {
+				if(this.esquerda == null) {
+					return false;
+				}
+				else {
+					return this.esquerda.busca(valor);
+				}
+			}
+			else if(valor > this.elemento.getValor()) {
+				if(this.direita == null) {
+					return false;
+				}
+				else {
+					return this.direita.busca(valor);
+				}
+			}
+			return false;
+		}
+	}
+	
+	public void imprimirPreOrdem() {
+		if(!isEmpty()) {
+			System.out.print(this.elemento.getValor() + " ");
+			if(this.esquerda != null) {
+				this.esquerda.imprimirPreOrdem();
+			}
+			if(this.direita != null) {
+				this.direita.imprimirPreOrdem();
+			}
+		}
+	}
+	
+	public void imprimirInOrdem() {
+		if(!isEmpty()) {
+			if(this.esquerda != null) {
+				this.esquerda.imprimirInOrdem();
+			}
+			System.out.print(this.getElemento().getValor() + " ");
+			if(this.direita != null) {
+				this.direita.imprimirInOrdem();
+			}		
+		}
+	}
+	
+	public void imprimirInOrdemInvertida() {
+		if(!isEmpty()) {
+			if(this.direita != null) {
+				this.direita.imprimirInOrdemInvertida();
+			}
+			System.out.print(this.elemento.getValor() + " ");
+			if(this.esquerda != null) {
+				this.esquerda.imprimirInOrdemInvertida();
+			}
+		}
+	}
+	
+	public void imprimirPosOrdem() {
+		if(!isEmpty()) {
+			if(this.direita != null) {
+				this.direita.imprimirPosOrdem();
+			}
+			if(this.esquerda != null) {
+				this.esquerda.imprimirPosOrdem();
+			}
+			System.out.print(this.elemento.getValor() + " ");
+		}
+	}
+	
 	public Elemento getElemento() {
 		return elemento;
 	}
