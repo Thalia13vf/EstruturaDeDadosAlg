@@ -7,6 +7,10 @@ public class Elemento {
 		this.valor = valor;
 	}
 	
+	public Elemento() {
+		
+	}
+	
 	public int getValor() {
 		return valor; 
 	}
